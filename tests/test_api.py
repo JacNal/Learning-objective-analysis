@@ -31,14 +31,14 @@ def test_analyse_accepts_valid_request():
     data = response.json()
 
     assert data["learning_objective"] == payload["learning_objective"]
-    assert "detected_verbs" in data
-    assert "issues" in data
-    assert "content_match" in data
-    assert "suggested_rewrite" in data
+    assert data["detected_verbs"][0]["lemma"] == "understand"
+    assert data["detected_verbs"][0]["known"] is True
+    assert data["detected_verbs"][0]["measurable"] is False
+    assert data["detected_verbs"][0]["bloom_category"] == "unclear"
 
-    assert isinstance(data["detected_verbs"], list)
-    assert isinstance(data["issues"], list)
-    assert isinstance(data["content_match"], dict)
+    assert data["issues"][0]["type"] == "vague verb"
+    assert data["content_match"]["status"] == "not implemented"
+    assert data["suggested_rewrite"] is None
 
 
 def test_analyse_rejects_missing_course_content():

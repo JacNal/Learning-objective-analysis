@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.verb_extractor import extract_verbs
 
 from app.schemas import (
     AnalyseRequest,
@@ -26,25 +27,55 @@ def health_check():
 
 @app.post("/api/v1/analyse", response_model=AnalyseResponse)
 def analyse_learning_objective(request: AnalyseRequest):
-    return AnalyseResponse(
+    extracted_verbs = extract_verbs(request.learning_objective)
 
-        learning_objective=request.learning_objective,
+    detected_verbs = [
+        DetectedVerb(
+            verb=item["verb"],
+            lemma=item["lemma"],
+            known=item["known"],
+            measurable=item["measurable"],
+            bloom_category=item["bloom_category"],
+        )
+        for item in extracted_verbs
+    ]
 
-        detected_verbs=[
-            DetectedVerb(
-                verb="placeholder",
-                measurable=False,
-                bloom_category="unknown",
-            )
-        ],
-        issues=[
+    issues = []
+    if not detected_verbs:
+        issues.append(
             Issue(
-                type="not implemented",
-                message="No parts of the response is implemented :)",
+                type="missing action verb",
+                message="No action verb was detected in the learning objective.",
             )
-        ],
+        )
+
+    for verb in detected_verbs:
+        if not verb.known:
+            issues.append(
+                Issue(
+                    type="unknown verb",
+                    message=(
+                        f"The verb or phrase '{verb.verb}' was detected, but it is not "
+                        "present in the current Bloom verb classification."
+                    ),
+                )
+            )
+        elif verb.measurable is False:
+            issues.append(
+                Issue(
+                    type="vague verb",
+                    message=(
+                        f"The verb or phrase '{verb.verb}' is vague or not measurable."
+                    ),
+                )
+            )
+
+    return AnalyseResponse(
+        learning_objective=request.learning_objective,
+        detected_verbs=detected_verbs,
+        issues=issues,
         content_match=ContentMatch(
-            status="unknown",
+            status="not implemented",
             score=0.0,
             matched_terms=[],
         ),

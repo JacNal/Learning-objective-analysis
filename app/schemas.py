@@ -16,7 +16,9 @@ class AnalyseRequest(BaseModel):
 
 class DetectedVerb(BaseModel):
     verb: str
-    measurable: bool
+    lemma: str
+    known: bool
+    measurable: bool | None
     bloom_category: str
 
 
