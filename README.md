@@ -219,7 +219,9 @@ Content-support accuracy: 0.50
 ```
 The verb extraction component performs best because it uses spaCy lemmatization combined with the Bloom-inspired knowledge graph. Issue detection and content-support scoring are weaker because they rely on heuristic keyword and noun-chunk overlap. This is especially bad when the course content and learning objective are related in concepts but use different terminology/wording.
 
-I also included a bunch of unit tests, that check whether all the API functionalities are working as expected. 
-## Limitations
+I also included a bunch of unit tests, that check whether all the API functionalities are working as expected. To run the unit tests using pytest use the following command from inside the projet folder:
+```text 
+ENABLE_LLM=false pytest
+```
 
-## Tests
+The reason we dont want to use unit tests for the LLM responses are that they are non-deterministic and therefore would be hard to guarantee reproducible outcomes.
