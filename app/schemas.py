@@ -43,15 +43,18 @@ class Issue(BaseModel):
     message: str
 
 
-class ContentMatch(BaseModel):
+class ContentSupport(BaseModel):
     status: str
     score: float
+    objective_terms: list[str]
+    course_terms: list[str]
     matched_terms: list[str]
+    missing_terms: list[str]
 
 
 class AnalyseResponse(BaseModel):
     learning_objective: str
     detected_verbs: list[DetectedVerb]
     issues: list[Issue]
-    content_match: ContentMatch
+    content_support: ContentSupport
     suggested_rewrite: str | None

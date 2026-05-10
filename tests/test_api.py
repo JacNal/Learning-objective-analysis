@@ -37,7 +37,15 @@ def test_analyse_accepts_valid_request():
     assert data["detected_verbs"][0]["bloom_category"] == "unclear"
 
     assert data["issues"][0]["type"] == "vague verb"
-    assert data["content_match"]["status"] == "not implemented"
+    assert data["content_support"]["status"] in {
+        "supported",
+        "partially_supported",
+        "unsupported",
+    }
+    assert "matched_terms" in data["content_support"]
+    assert "missing_terms" in data["content_support"]
+    assert "objective_terms" in data["content_support"]
+    assert "course_terms" in data["content_support"]
     assert data["suggested_rewrite"] is None
 
 

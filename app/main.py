@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from app.verb_extractor import extract_verbs
 from app.kg import lookup_verb
+from app.content_support import estimate_content_support
 
 from app.schemas import (
     AnalyseRequest,
     AnalyseResponse,
-    ContentMatch,
+    ContentSupport,
     DetectedVerb,
     Issue,
     VerbLookupResponse,
@@ -75,14 +76,42 @@ def analyse_learning_objective(request: AnalyseRequest):
                 )
             )
 
+    support = estimate_content_support(
+        learning_objective=request.learning_objective,
+        course_content=request.course_content,
+    )
+
+    if support["status"] == "unsupported":
+        issues.append(
+            Issue(
+                type="not supported",
+                message=(
+                    "The learning objective contains key terms that aren't clearly supported by the provided course content."
+                ),
+            )
+        )
+
+    elif support["status"] == "partially supported":
+        issues.append(
+            Issue(
+                type="partially supported",
+                message=(
+                    "The learning objective is only partially supported by the course content."
+                ),
+            )
+        )
+
     return AnalyseResponse(
         learning_objective=request.learning_objective,
         detected_verbs=detected_verbs,
         issues=issues,
-        content_match=ContentMatch(
-            status="not implemented",
-            score=0.0,
-            matched_terms=[],
+        content_support=ContentSupport(
+            status=support["status"],
+            score=support["score"],
+            objective_terms=support["objective_terms"],
+            course_terms=support["course_terms"],
+            matched_terms=support["matched_terms"],
+            missing_terms=support["missing_terms"],
         ),
         suggested_rewrite=None,
     )
