@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from app.verb_extractor import extract_verbs
+from app.kg import lookup_verb
 
 from app.schemas import (
     AnalyseRequest,
@@ -7,6 +8,7 @@ from app.schemas import (
     ContentMatch,
     DetectedVerb,
     Issue,
+    VerbLookupResponse,
 )
 
 app = FastAPI(
@@ -83,4 +85,19 @@ def analyse_learning_objective(request: AnalyseRequest):
             matched_terms=[],
         ),
         suggested_rewrite=None,
+    )
+
+
+@app.get("/api/v1/verbs/{verb}", response_model=VerbLookupResponse)
+def get_verb_info(verb: str):
+    result = lookup_verb(verb)
+
+    return VerbLookupResponse(
+        verb=verb.lower().strip(),
+        known=result["known"],
+        type=result["type"],
+        measurable=result["measurable"],
+        bloom_category=result["bloom_category"],
+        bloom_rank=result["bloom_rank"],
+        replacement_suggestions=result["replacement_suggestions"],
     )
