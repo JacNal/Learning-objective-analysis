@@ -16,7 +16,7 @@ class LearningObjectiveFeedback(dspy.Signature):
 
     explanation: str = dspy.OutputField(
         desc=(
-            "A short explanation of the main problems or strengths of the learning objective. Use 1-3 sentences."
+            "A short explanation of the main problems or strengths of the learning objective. Use 1-2 sentences."
         )
     )
     suggested_rewrite: str = dspy.OutputField(
@@ -47,7 +47,7 @@ def configure_dspy() -> bool:
     api_base = os.getenv("CAMPUSAI_API_URL")
     model = os.getenv("CAMPUSAI_MODEL")
 
-    if not api_key or api_base != "https://api.campusai.compute.dtu.dk/v1" or model not in {"Gemma 4"}:
+    if not api_key or not api_base or not model: #or api_base != "https://api.campusai.compute.dtu.dk/v1" or model not in {"Gemma 4"}:
         return False
 
     lm = dspy.LM(
@@ -56,7 +56,7 @@ def configure_dspy() -> bool:
         api_base=api_base,
         model_type="chat",
         temperature=0.2,
-        max_tokens=500,
+        max_tokens=1000,
         cache=False,
     )
 

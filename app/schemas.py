@@ -59,4 +59,20 @@ class AnalyseResponse(BaseModel):
     content_support: ContentSupport
     llm_used: bool
     explanation: str | None
-    suggested_rewrite: str | None
+    suggested_rewrite: str | None   
+
+class MultiAnalyseRequest(BaseModel):
+    course_content: str = Field(
+        ...,
+        min_length=1,
+        description="The course description or course content used for alignment checking.",
+    )
+    learning_objectives: list[str] = Field(
+        ...,
+        min_length=1,
+        description="A list of learning objectives to analyse.",
+    )
+
+
+class MultiAnalyseResponse(BaseModel):
+    results: list[AnalyseResponse]

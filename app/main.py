@@ -11,12 +11,14 @@ from app.schemas import (
     DetectedVerb,
     Issue,
     VerbLookupResponse,
+    MultiAnalyseRequest,
+    MultiAnalyseResponse,
 )
 
 app = FastAPI(
     title="Learning Objective Analysis API",
     description="API for analysing learning objectives using NLP, a small knowledge graph, and an LLM-based rewrite component.",
-    version="0.2.0",
+    version="1.0.1 :)",
 )
 
 
@@ -28,10 +30,8 @@ def health_check():
         "version": app.version,
     }
 
-
-@app.post("/api/v1/analyse", response_model=AnalyseResponse)
-def analyse_learning_objective(request: AnalyseRequest):
-    extracted_verbs = extract_verbs(request.learning_objective)
+def analyse_one_objective(learning_objective: str, course_content: str) -> AnalyseResponse:
+    extracted_verbs = extract_verbs(learning_objective)
 
     detected_verbs = [
         DetectedVerb(
@@ -78,8 +78,8 @@ def analyse_learning_objective(request: AnalyseRequest):
             )
 
     support = estimate_content_support(
-        learning_objective=request.learning_objective,
-        course_content=request.course_content,
+        learning_objective=learning_objective,
+        course_content=course_content,
     )
 
     if support["status"] == "unsupported":
@@ -103,14 +103,14 @@ def analyse_learning_objective(request: AnalyseRequest):
         )
 
     llm_feedback = generate_feedback(
-        learning_objective=request.learning_objective,
-        course_content=request.course_content,
+        learning_objective=learning_objective,
+        course_content=course_content,
         detected_verbs=detected_verbs,
         issues=issues,
         content_support=support,
     )
     return AnalyseResponse(
-        learning_objective=request.learning_objective,
+        learning_objective=learning_objective,
         detected_verbs=detected_verbs,
         issues=issues,
         content_support=ContentSupport(
@@ -126,6 +126,24 @@ def analyse_learning_objective(request: AnalyseRequest):
         suggested_rewrite=llm_feedback["suggested_rewrite"],
     )
 
+@app.post("/api/v1/analyse", response_model=AnalyseResponse)
+def analyse_learning_objective(request: AnalyseRequest):
+    return analyse_one_objective(
+        learning_objective=request.learning_objective,
+        course_content=request.course_content,
+    )
+
+@app.post("/api/v1/multi", response_model=MultiAnalyseResponse)
+def analyse_multiple_learning_objectives(request: MultiAnalyseRequest):
+    results = [
+        analyse_one_objective(
+            learning_objective=objective,
+            course_content=request.course_content,
+        )
+        for objective in request.learning_objectives
+    ]
+
+    return MultiAnalyseResponse(results=results)
 
 @app.get("/api/v1/verbs/{verb}", response_model=VerbLookupResponse)
 def get_verb_info(verb: str):

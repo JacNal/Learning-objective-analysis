@@ -115,3 +115,54 @@ def test_verb_lookup_unknown_verb():
     assert data["bloom_category"] == "unknown"
     assert data["bloom_rank"] is None
     assert data["replacement_suggestions"] == []
+
+
+def test_multi_analyse_accepts_multiple_objectives():
+    payload = {
+        "course_content": (
+            "The course covers classification, regression, model evaluation, "
+            "and visualization."
+        ),
+        "learning_objectives": [
+            "Implement a classification model.",
+            "Students should understand model evaluation.",
+        ],
+    }
+
+    response = client.post("/api/v1/multi", json=payload)
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert "results" in data
+    assert len(data["results"]) == 2
+
+    first = data["results"][0]
+    second = data["results"][1]
+
+    assert first["learning_objective"] == "Implement a classification model."
+    assert second["learning_objective"] == "Students should understand model evaluation."
+
+    first_lemmas = {
+        verb["lemma"]
+        for verb in first["detected_verbs"]
+    }
+    second_lemmas = {
+        verb["lemma"]
+        for verb in second["detected_verbs"]
+    }
+
+    assert "implement" in first_lemmas
+    assert "understand" in second_lemmas
+
+
+def test_multi_analyse_rejects_empty_objective_list():
+    payload = {
+        "course_content": "The course covers classification and regression.",
+        "learning_objectives": [],
+    }
+
+    response = client.post("/api/v1/multi", json=payload)
+
+    assert response.status_code == 422
