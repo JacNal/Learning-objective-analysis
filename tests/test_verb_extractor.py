@@ -16,8 +16,10 @@ def test_extracts_measurable_verb():
 
     assert verb is not None
     assert verb["known"] is True
+    assert verb["type"] == "MeasurableVerb"
     assert verb["measurable"] is True
     assert verb["bloom_category"] == "application"
+    assert verb["bloom_rank"] == 3
 
 
 def test_extracts_inflected_verb_by_lemma():
@@ -32,7 +34,7 @@ def test_extracts_inflected_verb_by_lemma():
 
 
 def test_extracts_vague_verb():
-    result = extract_verbs("Understand machine learning methods.")
+    result = extract_verbs("Students should understand machine learning methods.")
 
     verb = find_by_lemma(result, "understand")
 
@@ -45,12 +47,15 @@ def test_extracts_vague_verb():
 def test_extracts_knowledge_of_phrase():
     result = extract_verbs("Students should have knowledge of regression models.")
 
-    verb = find_by_lemma(result, "knowledge of")
+    phrase = find_by_lemma(result, "knowledge of")
 
-    assert verb is not None
-    assert verb["known"] is True
-    assert verb["measurable"] is False
-    assert verb["bloom_category"] == "unclear"
+    assert phrase is not None
+    assert phrase["known"] is True
+    assert phrase["type"] == "VaguePhrase"
+    assert phrase["measurable"] is False
+    assert phrase["bloom_category"] == "unclear"
+    assert phrase["bloom_rank"] is None
+    assert len(phrase["replacement_suggestions"]) > 0
 
 
 def test_extracts_understanding_of_phrase():

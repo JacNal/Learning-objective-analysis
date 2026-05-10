@@ -12,14 +12,22 @@ class AnalyseRequest(BaseModel):
         min_length=1,
         description="The course description or course content.",
     )
-
+    
+class ReplacementSuggestion(BaseModel):
+    verb: str
+    bloom_category: str
+    bloom_rank: int
 
 class DetectedVerb(BaseModel):
     verb: str
     lemma: str
     known: bool
+    type: str
     measurable: bool | None
     bloom_category: str
+    bloom_rank: int | None
+    replacement_suggestions: list[ReplacementSuggestion]
+
 
 
 class Issue(BaseModel):

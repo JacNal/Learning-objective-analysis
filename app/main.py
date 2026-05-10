@@ -34,8 +34,11 @@ def analyse_learning_objective(request: AnalyseRequest):
             verb=item["verb"],
             lemma=item["lemma"],
             known=item["known"],
+            type=item["type"],
             measurable=item["measurable"],
             bloom_category=item["bloom_category"],
+            bloom_rank=item["bloom_rank"],
+            replacement_suggestions=item["replacement_suggestions"],
         )
         for item in extracted_verbs
     ]

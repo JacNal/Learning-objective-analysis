@@ -20,7 +20,7 @@ def test_health_check_returns_ok():
 
 def test_analyse_accepts_valid_request():
     payload = {
-        "learning_objective": "Understand machine learning methods.",
+        "learning_objective": "Students should understand machine learning methods.",
         "course_content": "The course covers regression, classification, and model evaluation.",
     }
 
@@ -43,7 +43,7 @@ def test_analyse_accepts_valid_request():
 
 def test_analyse_rejects_missing_course_content():
     payload = {
-        "learning_objective": "Understand machine learning methods."
+        "learning_objective": "Students should understand machine learning methods."
     }
 
     response = client.post("/api/v1/analyse", json=payload)

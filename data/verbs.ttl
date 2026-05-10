@@ -1,0 +1,215 @@
+@prefix loa: <http://example.org/learning-objective-analysis#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#####################################################
+# Bloom levels
+#####################################################
+
+loa:knowledge a loa:BloomLevel ;
+    loa:label "knowledge" ;
+    loa:rank 1 .
+
+loa:comprehension a loa:BloomLevel ;
+    loa:label "comprehension" ;
+    loa:rank 2 .
+
+loa:application a loa:BloomLevel ;
+    loa:label "application" ;
+    loa:rank 3 .
+
+loa:analysis a loa:BloomLevel ;
+    loa:label "analysis" ;
+    loa:rank 4 .
+
+loa:synthesis a loa:BloomLevel ;
+    loa:label "synthesis" ;
+    loa:rank 5 .
+
+loa:evaluation a loa:BloomLevel ;
+    loa:label "evaluation" ;
+    loa:rank 6 .
+
+
+###################################################
+# Measurable verbs
+###################################################
+
+loa:define a loa:MeasurableVerb ;
+    loa:lemma "define" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:list a loa:MeasurableVerb ;
+    loa:lemma "list" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:identify a loa:MeasurableVerb ;
+    loa:lemma "identify" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:describe a loa:MeasurableVerb ;
+    loa:lemma "describe" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:explain a loa:MeasurableVerb ;
+    loa:lemma "explain" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:summarize a loa:MeasurableVerb ;
+    loa:lemma "summarize" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:apply a loa:MeasurableVerb ;
+    loa:lemma "apply" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:calculate a loa:MeasurableVerb ;
+    loa:lemma "calculate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:implement a loa:MeasurableVerb ;
+    loa:lemma "implement" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:compare a loa:MeasurableVerb ;
+    loa:lemma "compare" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:analyze a loa:MeasurableVerb ;
+    loa:lemma "analyze" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:differentiate a loa:MeasurableVerb ;
+    loa:lemma "differentiate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:design a loa:MeasurableVerb ;
+    loa:lemma "design" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:develop a loa:MeasurableVerb ;
+    loa:lemma "develop" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:construct a loa:MeasurableVerb ;
+    loa:lemma "construct" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:evaluate a loa:MeasurableVerb ;
+    loa:lemma "evaluate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:assess a loa:MeasurableVerb ;
+    loa:lemma "assess" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:justify a loa:MeasurableVerb ;
+    loa:lemma "justify" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+
+###############################################
+# Vague verbs
+###############################################
+
+loa:understand a loa:VagueVerb ;
+    loa:lemma "understand" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:explain ;
+    loa:replacementVerb loa:describe ;
+    loa:replacementVerb loa:compare .
+
+loa:know a loa:VagueVerb ;
+    loa:lemma "know" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:define ;
+    loa:replacementVerb loa:identify ;
+    loa:replacementVerb loa:explain .
+
+loa:learn a loa:VagueVerb ;
+    loa:lemma "learn" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:describe ;
+    loa:replacementVerb loa:apply ;
+    loa:replacementVerb loa:analyze .
+
+loa:appreciate a loa:VagueVerb ;
+    loa:lemma "appreciate" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:describe ;
+    loa:replacementVerb loa:explain ;
+    loa:replacementVerb loa:evaluate .
+
+
+##################################################################
+# Vague phrases
+#################################################################
+
+loa:appreciation_for a loa:VaguePhrase ;
+    loa:lemma "appreciation for" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:describe ;
+    loa:replacementVerb loa:evaluate .
+
+loa:acquainted_with a loa:VaguePhrase ;
+    loa:lemma "acquainted with" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:identify ;
+    loa:replacementVerb loa:describe .
+
+loa:awareness_of a loa:VaguePhrase ;
+    loa:lemma "awareness of" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:identify ;
+    loa:replacementVerb loa:describe .
+
+loa:capable_of a loa:VaguePhrase ;
+    loa:lemma "capable of" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:apply ;
+    loa:replacementVerb loa:implement ;
+    loa:replacementVerb loa:demonstrate .
+
+loa:familiar_with a loa:VaguePhrase ;
+    loa:lemma "familiar with" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:identify ;
+    loa:replacementVerb loa:describe ;
+    loa:replacementVerb loa:explain .
+
+loa:knowledge_of a loa:VaguePhrase ;
+    loa:lemma "knowledge of" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:define ;
+    loa:replacementVerb loa:identify ;
+    loa:replacementVerb loa:explain .
+
+loa:knowledgeable_about a loa:VaguePhrase ;
+    loa:lemma "knowledgeable about" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:describe ;
+    loa:replacementVerb loa:explain .
+
+loa:understanding_of a loa:VaguePhrase ;
+    loa:lemma "understanding of" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:explain ;
+    loa:replacementVerb loa:compare ;
+    loa:replacementVerb loa:analyze .

@@ -2,6 +2,7 @@ from functools import lru_cache
 
 import spacy
 from spacy.matcher import Matcher
+from app.kg import lookup_verb
 
 #Word list is based on Utica's list of Bloom's Taxonomy Action verbs which can be found on page 2 in the link below. Multi word phrases have been removed.
 # https://www.utica.edu/academic/Assessment/new/Blooms%20Taxonomy%20-%20Best.pdf
@@ -351,14 +352,18 @@ def extract_vague_phrases(doc) -> list[dict]:
     for match_id, start, end in matches:
         label = doc.vocab.strings[match_id]
         canonical = phrase_labels.get(label, doc[start:end].text.lower())
+        classification = lookup_verb(canonical)
 
         extracted.append(
             {
                 "verb": canonical,
                 "lemma": canonical,
-                "known": True,
-                "measurable": False,
-                "bloom_category": "unclear",
+                "known": classification["known"],
+                "type": classification["type"],
+                "measurable": classification["measurable"],
+                "bloom_category": classification["bloom_category"],
+                "bloom_rank": classification["bloom_rank"],
+                "replacement_suggestions": classification["replacement_suggestions"],
             }
         )
 
@@ -374,28 +379,26 @@ def extract_verbs(learning_objective: str) -> list[dict]:
     extracted.extend(extract_vague_phrases(doc))
 
     for token in doc:
-        known_lemma = get_known_verb_lemma(token)
-
-        is_spacy_verb = token.pos_ == "VERB"
-        is_known_first_token = token.i == 0 and known_lemma is not None
-
-        if not is_spacy_verb and not is_known_first_token:
+        if token.pos_ != "VERB":
             continue
 
-        lemma = known_lemma or token.lemma_.lower()
+        lemma = token.lemma_.lower()
 
         if lemma in AUXILIARY_LEMMAS_TO_IGNORE:
             continue
 
-        classification = classify_verb(lemma)
+        classification = lookup_verb(lemma)
 
         extracted.append(
             {
                 "verb": token.text.lower(),
                 "lemma": lemma,
                 "known": classification["known"],
+                "type": classification["type"],
                 "measurable": classification["measurable"],
                 "bloom_category": classification["bloom_category"],
+                "bloom_rank": classification["bloom_rank"],
+                "replacement_suggestions": classification["replacement_suggestions"],
             }
         )
 
