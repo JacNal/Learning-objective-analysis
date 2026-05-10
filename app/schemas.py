@@ -57,4 +57,6 @@ class AnalyseResponse(BaseModel):
     detected_verbs: list[DetectedVerb]
     issues: list[Issue]
     content_support: ContentSupport
+    llm_used: bool
+    explanation: str | None
     suggested_rewrite: str | None

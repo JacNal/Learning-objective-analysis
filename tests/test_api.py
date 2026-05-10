@@ -46,7 +46,9 @@ def test_analyse_accepts_valid_request():
     assert "missing_terms" in data["content_support"]
     assert "objective_terms" in data["content_support"]
     assert "course_terms" in data["content_support"]
-    assert data["suggested_rewrite"] is None
+    assert "llm_used" in data
+    assert "explanation" in data
+    assert "suggested_rewrite" in data
 
 
 def test_analyse_rejects_missing_course_content():

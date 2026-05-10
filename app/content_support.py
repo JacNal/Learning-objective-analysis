@@ -83,9 +83,9 @@ def estimate_content_support(
     else:
         score = len(matched_terms) / len(objective_terms)
 
-    if score >= 0.66:
+    if score >= 0.5:
         status = "supported"
-    elif score >= 0.33:
+    elif score >= 0.25:
         status = "partially supported"
     else:
         status = "unsupported"

@@ -12,6 +12,7 @@ RUN python -m spacy download en_core_web_sm
 COPY app ./app
 COPY tests ./tests
 COPY data ./data
+COPY scripts ./scripts
 
 EXPOSE 8000
 

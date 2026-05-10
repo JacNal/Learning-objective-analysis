@@ -5,3 +5,5 @@ pytest
 httpx
 spacy
 rdflib
+dspy
+python-dotenv

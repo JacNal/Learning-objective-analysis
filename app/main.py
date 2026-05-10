@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from app.verb_extractor import extract_verbs
 from app.kg import lookup_verb
 from app.content_support import estimate_content_support
+from app.llm_feedback import generate_feedback
 
 from app.schemas import (
     AnalyseRequest,
@@ -15,7 +16,7 @@ from app.schemas import (
 app = FastAPI(
     title="Learning Objective Analysis API",
     description="API for analysing learning objectives using NLP, a small knowledge graph, and an LLM-based rewrite component.",
-    version="0.1.1",
+    version="0.2.0",
 )
 
 
@@ -101,6 +102,13 @@ def analyse_learning_objective(request: AnalyseRequest):
             )
         )
 
+    llm_feedback = generate_feedback(
+        learning_objective=request.learning_objective,
+        course_content=request.course_content,
+        detected_verbs=detected_verbs,
+        issues=issues,
+        content_support=support,
+    )
     return AnalyseResponse(
         learning_objective=request.learning_objective,
         detected_verbs=detected_verbs,
@@ -113,7 +121,9 @@ def analyse_learning_objective(request: AnalyseRequest):
             matched_terms=support["matched_terms"],
             missing_terms=support["missing_terms"],
         ),
-        suggested_rewrite=None,
+        llm_used=llm_feedback["llm_used"],
+        explanation=llm_feedback["explanation"],
+        suggested_rewrite=llm_feedback["suggested_rewrite"],
     )
 
 
