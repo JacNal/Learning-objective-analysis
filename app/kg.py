@@ -19,7 +19,7 @@ def lookup_verb(lemma: str) -> dict:
     normalized_lemma = lemma.lower().strip()
 
     main_query = """
-    PREFIX loa: <http://example.org/learning-objective-analysis#>
+    PREFIX loa: <http://127.0.0.1/learning-objective-analysis#>
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
     SELECT ?entry ?type ?measurable ?bloomLabel ?bloomRank
@@ -74,7 +74,7 @@ def get_replacement_suggestions(entry) -> list[dict]:
     graph = load_graph()
 
     replacement_query = """
-    PREFIX loa: <http://example.org/learning-objective-analysis#>
+    PREFIX loa: <http://127.0.0.1/learning-objective-analysis#>
 
     SELECT ?replacementLemma ?bloomLabel ?bloomRank
     WHERE {

@@ -1,4 +1,4 @@
-@prefix loa: <http://example.org/learning-objective-analysis#> .
+@prefix loa: <http://127.0.0.1/learning-objective-analysis#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 #####################################################
@@ -34,13 +34,20 @@ loa:evaluation a loa:BloomLevel ;
 # Measurable verbs
 ###################################################
 
+# Knowledge
+
+loa:arrange a loa:MeasurableVerb ;
+    loa:lemma "arrange" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
 loa:define a loa:MeasurableVerb ;
     loa:lemma "define" ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:knowledge .
 
-loa:list a loa:MeasurableVerb ;
-    loa:lemma "list" ;
+loa:duplicate a loa:MeasurableVerb ;
+    loa:lemma "duplicate" ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:knowledge .
 
@@ -49,8 +56,121 @@ loa:identify a loa:MeasurableVerb ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:knowledge .
 
+loa:label a loa:MeasurableVerb ;
+    loa:lemma "label" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:list a loa:MeasurableVerb ;
+    loa:lemma "list" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:match a loa:MeasurableVerb ;
+    loa:lemma "match" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:memorize a loa:MeasurableVerb ;
+    loa:lemma "memorize" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:name a loa:MeasurableVerb ;
+    loa:lemma "name" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:order a loa:MeasurableVerb ;
+    loa:lemma "order" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:outline a loa:MeasurableVerb ;
+    loa:lemma "outline" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:recall a loa:MeasurableVerb ;
+    loa:lemma "recall" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:record a loa:MeasurableVerb ;
+    loa:lemma "record" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:relate a loa:MeasurableVerb ;
+    loa:lemma "relate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:repeat a loa:MeasurableVerb ;
+    loa:lemma "repeat" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:reproduce a loa:MeasurableVerb ;
+    loa:lemma "reproduce" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:select a loa:MeasurableVerb ;
+    loa:lemma "select" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:state a loa:MeasurableVerb ;
+    loa:lemma "state" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:tell a loa:MeasurableVerb ;
+    loa:lemma "tell" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+loa:underline a loa:MeasurableVerb ;
+    loa:lemma "underline" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:knowledge .
+
+
+# Comprehension
+
+loa:classify a loa:MeasurableVerb ;
+    loa:lemma "classify" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:convert a loa:MeasurableVerb ;
+    loa:lemma "convert" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:defend a loa:MeasurableVerb ;
+    loa:lemma "defend" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
 loa:describe a loa:MeasurableVerb ;
     loa:lemma "describe" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:discuss a loa:MeasurableVerb ;
+    loa:lemma "discuss" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:distinguish a loa:MeasurableVerb ;
+    loa:lemma "distinguish" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:estimate a loa:MeasurableVerb ;
+    loa:lemma "estimate" ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:comprehension .
 
@@ -59,18 +179,121 @@ loa:explain a loa:MeasurableVerb ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:comprehension .
 
+loa:express a loa:MeasurableVerb ;
+    loa:lemma "express" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:extend a loa:MeasurableVerb ;
+    loa:lemma "extend" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:generalize a loa:MeasurableVerb ;
+    loa:lemma "generalize" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:indicate a loa:MeasurableVerb ;
+    loa:lemma "indicate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:infer a loa:MeasurableVerb ;
+    loa:lemma "infer" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:interpret a loa:MeasurableVerb ;
+    loa:lemma "interpret" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:locate a loa:MeasurableVerb ;
+    loa:lemma "locate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:paraphrase a loa:MeasurableVerb ;
+    loa:lemma "paraphrase" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:predict a loa:MeasurableVerb ;
+    loa:lemma "predict" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:recognize a loa:MeasurableVerb ;
+    loa:lemma "recognize" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:restate a loa:MeasurableVerb ;
+    loa:lemma "restate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+loa:review a loa:MeasurableVerb ;
+    loa:lemma "review" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
 loa:summarize a loa:MeasurableVerb ;
     loa:lemma "summarize" ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:comprehension .
+
+loa:translate a loa:MeasurableVerb ;
+    loa:lemma "translate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:comprehension .
+
+
+# Application
 
 loa:apply a loa:MeasurableVerb ;
     loa:lemma "apply" ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:application .
 
-loa:calculate a loa:MeasurableVerb ;
-    loa:lemma "calculate" ;
+loa:change a loa:MeasurableVerb ;
+    loa:lemma "change" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:choose a loa:MeasurableVerb ;
+    loa:lemma "choose" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:compute a loa:MeasurableVerb ;
+    loa:lemma "compute" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:demonstrate a loa:MeasurableVerb ;
+    loa:lemma "demonstrate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:discover a loa:MeasurableVerb ;
+    loa:lemma "discover" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:dramatize a loa:MeasurableVerb ;
+    loa:lemma "dramatize" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:employ a loa:MeasurableVerb ;
+    loa:lemma "employ" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:illustrate a loa:MeasurableVerb ;
+    loa:lemma "illustrate" ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:application .
 
@@ -79,13 +302,111 @@ loa:implement a loa:MeasurableVerb ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:application .
 
+loa:manipulate a loa:MeasurableVerb ;
+    loa:lemma "manipulate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:modify a loa:MeasurableVerb ;
+    loa:lemma "modify" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:operate a loa:MeasurableVerb ;
+    loa:lemma "operate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:practice a loa:MeasurableVerb ;
+    loa:lemma "practice" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:prepare a loa:MeasurableVerb ;
+    loa:lemma "prepare" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:produce a loa:MeasurableVerb ;
+    loa:lemma "produce" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:schedule a loa:MeasurableVerb ;
+    loa:lemma "schedule" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:show a loa:MeasurableVerb ;
+    loa:lemma "show" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:sketch a loa:MeasurableVerb ;
+    loa:lemma "sketch" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:solve a loa:MeasurableVerb ;
+    loa:lemma "solve" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:use a loa:MeasurableVerb ;
+    loa:lemma "use" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+loa:write a loa:MeasurableVerb ;
+    loa:lemma "write" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:application .
+
+
+# Analysis
+
+loa:analyze a loa:MeasurableVerb ;
+    loa:lemma "analyze" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:appraise a loa:MeasurableVerb ;
+    loa:lemma "appraise" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:breakdown a loa:MeasurableVerb ;
+    loa:lemma "breakdown" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:calculate a loa:MeasurableVerb ;
+    loa:lemma "calculate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:categorize a loa:MeasurableVerb ;
+    loa:lemma "categorize" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
 loa:compare a loa:MeasurableVerb ;
     loa:lemma "compare" ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:analysis .
 
-loa:analyze a loa:MeasurableVerb ;
-    loa:lemma "analyze" ;
+loa:contrast a loa:MeasurableVerb ;
+    loa:lemma "contrast" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:criticize a loa:MeasurableVerb ;
+    loa:lemma "criticize" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:diagram a loa:MeasurableVerb ;
+    loa:lemma "diagram" ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:analysis .
 
@@ -93,6 +414,99 @@ loa:differentiate a loa:MeasurableVerb ;
     loa:lemma "differentiate" ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:analysis .
+
+loa:discriminate a loa:MeasurableVerb ;
+    loa:lemma "discriminate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:examine a loa:MeasurableVerb ;
+    loa:lemma "examine" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:experiment a loa:MeasurableVerb ;
+    loa:lemma "experiment" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:inspect a loa:MeasurableVerb ;
+    loa:lemma "inspect" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:inventory a loa:MeasurableVerb ;
+    loa:lemma "inventory" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:model a loa:MeasurableVerb ;
+    loa:lemma "model" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:point_out a loa:MeasurableVerb ;
+    loa:lemma "point out" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:question a loa:MeasurableVerb ;
+    loa:lemma "question" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:separate a loa:MeasurableVerb ;
+    loa:lemma "separate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:subdivide a loa:MeasurableVerb ;
+    loa:lemma "subdivide" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+loa:test a loa:MeasurableVerb ;
+    loa:lemma "test" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:analysis .
+
+
+# Synthesis
+
+loa:assemble a loa:MeasurableVerb ;
+    loa:lemma "assemble" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:collect a loa:MeasurableVerb ;
+    loa:lemma "collect" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:combine a loa:MeasurableVerb ;
+    loa:lemma "combine" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:comply a loa:MeasurableVerb ;
+    loa:lemma "comply" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:compose a loa:MeasurableVerb ;
+    loa:lemma "compose" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:construct a loa:MeasurableVerb ;
+    loa:lemma "construct" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:create a loa:MeasurableVerb ;
+    loa:lemma "create" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
 
 loa:design a loa:MeasurableVerb ;
     loa:lemma "design" ;
@@ -104,13 +518,81 @@ loa:develop a loa:MeasurableVerb ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:synthesis .
 
-loa:construct a loa:MeasurableVerb ;
-    loa:lemma "construct" ;
+loa:devise a loa:MeasurableVerb ;
+    loa:lemma "devise" ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:synthesis .
 
-loa:evaluate a loa:MeasurableVerb ;
-    loa:lemma "evaluate" ;
+loa:formulate a loa:MeasurableVerb ;
+    loa:lemma "formulate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:generate a loa:MeasurableVerb ;
+    loa:lemma "generate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:manage a loa:MeasurableVerb ;
+    loa:lemma "manage" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:organize a loa:MeasurableVerb ;
+    loa:lemma "organize" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:plan a loa:MeasurableVerb ;
+    loa:lemma "plan" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:propose a loa:MeasurableVerb ;
+    loa:lemma "propose" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:rearrange a loa:MeasurableVerb ;
+    loa:lemma "rearrange" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:reconstruct a loa:MeasurableVerb ;
+    loa:lemma "reconstruct" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:reorganize a loa:MeasurableVerb ;
+    loa:lemma "reorganize" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:revise a loa:MeasurableVerb ;
+    loa:lemma "revise" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:rewrite a loa:MeasurableVerb ;
+    loa:lemma "rewrite" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:set_up a loa:MeasurableVerb ;
+    loa:lemma "set up" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+loa:synthesize a loa:MeasurableVerb ;
+    loa:lemma "synthesize" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:synthesis .
+
+
+# Evaluation
+
+loa:argue a loa:MeasurableVerb ;
+    loa:lemma "argue" ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:evaluation .
 
@@ -119,8 +601,88 @@ loa:assess a loa:MeasurableVerb ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:evaluation .
 
+loa:attach a loa:MeasurableVerb ;
+    loa:lemma "attach" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:conclude a loa:MeasurableVerb ;
+    loa:lemma "conclude" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:debate a loa:MeasurableVerb ;
+    loa:lemma "debate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:decide a loa:MeasurableVerb ;
+    loa:lemma "decide" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:evaluate a loa:MeasurableVerb ;
+    loa:lemma "evaluate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:judge a loa:MeasurableVerb ;
+    loa:lemma "judge" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
 loa:justify a loa:MeasurableVerb ;
     loa:lemma "justify" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:measure a loa:MeasurableVerb ;
+    loa:lemma "measure" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:prioritize a loa:MeasurableVerb ;
+    loa:lemma "prioritize" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:prove a loa:MeasurableVerb ;
+    loa:lemma "prove" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:rank a loa:MeasurableVerb ;
+    loa:lemma "rank" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:rate a loa:MeasurableVerb ;
+    loa:lemma "rate" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:recommend a loa:MeasurableVerb ;
+    loa:lemma "recommend" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:score a loa:MeasurableVerb ;
+    loa:lemma "score" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:support a loa:MeasurableVerb ;
+    loa:lemma "support" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:value a loa:MeasurableVerb ;
+    loa:lemma "value" ;
+    loa:measurable true ;
+    loa:belongsToBloomLevel loa:evaluation .
+
+loa:verify a loa:MeasurableVerb ;
+    loa:lemma "verify" ;
     loa:measurable true ;
     loa:belongsToBloomLevel loa:evaluation .
 
@@ -156,6 +718,48 @@ loa:appreciate a loa:VagueVerb ;
     loa:replacementVerb loa:describe ;
     loa:replacementVerb loa:explain ;
     loa:replacementVerb loa:evaluate .
+
+loa:believe a loa:VagueVerb ;
+    loa:lemma "believe" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:argue ;
+    loa:replacementVerb loa:justify ;
+    loa:replacementVerb loa:evaluate .
+
+loa:comprehend a loa:VagueVerb ;
+    loa:lemma "comprehend" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:explain ;
+    loa:replacementVerb loa:describe ;
+    loa:replacementVerb loa:summarize .
+
+loa:conceptualize a loa:VagueVerb ;
+    loa:lemma "conceptualize" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:describe ;
+    loa:replacementVerb loa:model ;
+    loa:replacementVerb loa:formulate .
+
+loa:realize a loa:VagueVerb ;
+    loa:lemma "realize" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:identify ;
+    loa:replacementVerb loa:explain ;
+    loa:replacementVerb loa:describe .
+
+loa:see a loa:VagueVerb ;
+    loa:lemma "see" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:identify ;
+    loa:replacementVerb loa:describe ;
+    loa:replacementVerb loa:explain .
+
+loa:hear a loa:VagueVerb ;
+    loa:lemma "hear" ;
+    loa:measurable false ;
+    loa:replacementVerb loa:identify ;
+    loa:replacementVerb loa:describe ;
+    loa:replacementVerb loa:summarize .
 
 
 ##################################################################

@@ -53,6 +53,8 @@ For this project I used: FastAPI for the REST API, Docker for containerization, 
 
 I also used RDFLib and SPARQL for the Blooms taxonomy inspired verb knowledge graph, DSPy for the LLM-based explanation and rewriting.
 
+I also made use of an LLM to generate the list of quantifiable action verbs that fall under Blooms Taxonomy based on https://www.utica.edu/academic/Assessment/new/Blooms%20Taxonomy%20-%20Best.pdf. It is not a complete list, but rather a curated subset of the full list. This is because some of the verbs appeared for multiple categories and the knowledge graph assigns a single bloom level per lemma.
+
 ## Running the service
 
 The service can be run without the use of an LLM if you simply do not set up any .env file. An example .env file has been created (.env.example). You have to set up a .env file and use your own API key in order to use the LLM feature of the service.
@@ -223,5 +225,4 @@ I also included a bunch of unit tests, that check whether all the API functional
 ```text 
 ENABLE_LLM=false pytest
 ```
-
 The reason we dont want to use unit tests for the LLM responses are that they are non-deterministic and therefore would be hard to guarantee reproducible outcomes.
